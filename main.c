@@ -1,39 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-
-
-int myRand(int m)
-{
-
-    return(rand()%m+1);
-
-}
-
 
 int main()
 {
-   int n, randomNumber;
-   printf("How many random numbers would you like to have? ");
-   scanf("%i",&n);
+    int dim;
+    float* vec;
 
-   srand(time(NULL));
+    printf("How many numbers do you want to enter? ");
+    scanf("%d",&dim);
 
-   int i;
-   /*for(i=1;i<=n;i++)
-   {
-       randomNumber = rand() % 10 +1;
-       printf("%i\n", randomNumber);
-   }
-   */
+    vec = (float *) malloc(dim* sizeof(float));
 
-   for(i=1; i<=n; i++)
-   {
-      printf("%i\n",myRand(n));
-   }
+    if (vec == NULL)
+    {
+        printf("ERROR: memory allocation was not successful!\n");
+        return EXIT_FAILURE;
+    }
+
+    int i;
+    for(i=0; i<dim; i++)
+    {
+        printf("%d ",i+1);
+        scanf("%f",&vec[i]);
+    }
+
+    free(vec);
 
 
-
-   return 0;
-
+    return EXIT_SUCCESS;
 }
